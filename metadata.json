@@ -1,0 +1,8 @@
+{
+  "name": "INTELLIGRADE - AI Answer Evaluation & Academic Analytics",
+  "description": "An AI-powered descriptive answer evaluation and exploratory academic data analytics system for university performance evaluation and curriculum insights.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

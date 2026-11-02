@@ -1,0 +1,561 @@
+{
+  "users": [
+    {
+      "id": "USR-ADMIN-001",
+      "email": "admin@nandhaengg.org",
+      "name": "Administrator (Dr. Sudarsan)",
+      "role": "admin",
+      "department": "Computer Science & Engineering",
+      "status": "active",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-02T07:10:21.779Z",
+      "passwordHash": "96927c8b76a3f74db299b6a62be1ee975fd292cb700e2dfe35c3203429af486e"
+    },
+    {
+      "id": "USR-TEACHER-001",
+      "email": "prof.balaji@nandhaengg.org",
+      "name": "Prof. Balaji S.",
+      "role": "teacher",
+      "department": "AI & Data Science",
+      "designation": "Associate Professor & DEV Lead",
+      "status": "active",
+      "mustChangePassword": false,
+      "createdAt": "2026-11-02T07:10:21.779Z",
+      "passwordHash": "1c1681c49c94e2941ef370441ea689aeb949aca44efb9ed3a8c9f5e87d292ce6"
+    },
+    {
+      "id": "USR-STU-732225AI104",
+      "email": "732225AI104@nandhaengg.org",
+      "name": "Aarav Sharma",
+      "role": "student",
+      "department": "AI & Data Science",
+      "classYear": "Year 3 - Sec A",
+      "rollNumber": "732225AI104",
+      "status": "active",
+      "mustChangePassword": false,
+      "createdAt": "2026-11-02T07:10:21.779Z",
+      "passwordHash": "19761401422a89d3d91db08a753c1f7ee63a37b9ebdead70eb2a7b82a5d3975e"
+    },
+    {
+      "id": "USR-STU-732225AI105",
+      "email": "732225ai105@nandhaengg.org",
+      "name": "Ananya Verma",
+      "role": "student",
+      "department": "AI & Data Science",
+      "classYear": "Year 3 - Sec A",
+      "rollNumber": "732225AI105",
+      "status": "active",
+      "mustChangePassword": false,
+      "createdAt": "2026-11-02T07:11:26.988Z",
+      "passwordHash": "f983c79515299c7654065a5bdb1e45cbd7ff503802d013dc74ac73b7c935fe1c"
+    },
+    {
+      "id": "USR-STAFF-6136",
+      "email": "prof.radha@nandhaengg.org",
+      "name": "Dr. Radha K.",
+      "role": "teacher",
+      "department": "Computer Science & Engineering",
+      "designation": "Assistant Professor",
+      "status": "pending_approval",
+      "mustChangePassword": false,
+      "createdAt": "2026-11-02T07:11:36.136Z",
+      "passwordHash": "fb5303c4d5a508b554fdbf3cc48a2660f971a5ba61055f7c7272f07df2727e7f"
+    }
+  ],
+  "roster": [
+    {
+      "id": "ROS-001",
+      "rollNumber": "732225AI104",
+      "name": "Aarav Sharma",
+      "institutionalEmail": "732225AI104@nandhaengg.org",
+      "department": "AI & Data Science",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": true,
+      "registeredUserId": "USR-STU-732225AI104"
+    },
+    {
+      "id": "ROS-002",
+      "rollNumber": "732225AI105",
+      "name": "Ananya Iyer",
+      "institutionalEmail": "732225AI105@nandhaengg.org",
+      "department": "AI & Data Science",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": true,
+      "registeredUserId": "USR-STU-732225AI105"
+    },
+    {
+      "id": "ROS-003",
+      "rollNumber": "732225CS101",
+      "name": "Rohan Deshmukh",
+      "institutionalEmail": "732225CS101@nandhaengg.org",
+      "department": "Computer Science & Engineering",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    },
+    {
+      "id": "ROS-004",
+      "rollNumber": "732225IT102",
+      "name": "Priya Venkatesh",
+      "institutionalEmail": "732225IT102@nandhaengg.org",
+      "department": "Information Technology",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    },
+    {
+      "id": "ROS-005",
+      "rollNumber": "732225CS103",
+      "name": "Vikram Malhotra",
+      "institutionalEmail": "732225CS103@nandhaengg.org",
+      "department": "Computer Science & Engineering",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    },
+    {
+      "id": "ROS-006",
+      "rollNumber": "732225AI106",
+      "name": "Sneha Kulkarni",
+      "institutionalEmail": "732225AI106@nandhaengg.org",
+      "department": "AI & Data Science",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    },
+    {
+      "id": "ROS-007",
+      "rollNumber": "732225IT104",
+      "name": "Aditya Verma",
+      "institutionalEmail": "732225IT104@nandhaengg.org",
+      "department": "Information Technology",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    },
+    {
+      "id": "ROS-008",
+      "rollNumber": "732225AI107",
+      "name": "Meera Nambiar",
+      "institutionalEmail": "732225AI107@nandhaengg.org",
+      "department": "AI & Data Science",
+      "year": "Year 3",
+      "semester": "Sem 5",
+      "isRegistered": false
+    }
+  ],
+  "staffRequests": [
+    {
+      "id": "REQ-6136",
+      "name": "Dr. Radha K.",
+      "email": "prof.radha@nandhaengg.org",
+      "department": "Computer Science & Engineering",
+      "designation": "Assistant Professor",
+      "status": "pending",
+      "requestedAt": "2026-11-02T07:11:36.136Z"
+    }
+  ],
+  "examinations": [
+    {
+      "id": "EXAM-CAT1-DEV",
+      "name": "Continuous Assessment Test 1 (CAT 1) — DEV",
+      "type": "CAT 1",
+      "subject": "Data Exploration and Visualization",
+      "department": "AI & Data Science",
+      "semester": "Sem 5",
+      "academicYear": "2026-2027",
+      "date": "2026-09-15",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "maxMarks": 50,
+      "passingMarks": 25,
+      "instructions": "Answer all descriptive questions. Show mathematical steps for IQR and box plot boundary calculations.",
+      "syllabusVersionId": "SYL-DEV-001",
+      "createdAt": "2026-08-20T09:00:00Z",
+      "createdBy": "USR-TEACHER-001",
+      "questions": [
+        {
+          "id": "Q-DEV-1",
+          "questionNumber": "1",
+          "questionText": "Explain the mathematical construction of a Box and Whisker Plot. Discuss how it identifies potential outliers using the Interquartile Range (IQR) rule.",
+          "maxMarks": 20,
+          "unitNumber": 1,
+          "topicId": "TOP-DEV-01",
+          "modelAnswer": "A Box Plot displays the five-number summary: Min, Q1, Median, Q3, and Max. The central box represents IQR = Q3 - Q1. Outliers are points beyond Q1 - 1.5*IQR or Q3 + 1.5*IQR.",
+          "rubricCriteria": [
+            {
+              "criterionName": "Five-Number Summary Definition",
+              "maxMarks": 5,
+              "description": "Correctly identifies Min, Q1, Median, Q3, Max"
+            },
+            {
+              "criterionName": "IQR Formula & Meaning",
+              "maxMarks": 5,
+              "description": "States IQR = Q3 - Q1 and middle 50% spread"
+            },
+            {
+              "criterionName": "Tukey Outlier Fences",
+              "maxMarks": 7,
+              "description": "Defines Lower Fence (Q1 - 1.5*IQR) and Upper Fence (Q3 + 1.5*IQR)"
+            },
+            {
+              "criterionName": "Clarity and Structure",
+              "maxMarks": 3,
+              "description": "Logically organized with diagrams/steps"
+            }
+          ]
+        },
+        {
+          "id": "Q-DEV-2",
+          "questionNumber": "2",
+          "questionText": "Compare Pearson Correlation Coefficient with Spearman Rank Correlation in bivariate data exploration.",
+          "maxMarks": 30,
+          "unitNumber": 3,
+          "topicId": "TOP-DEV-03",
+          "modelAnswer": "Pearson measures linear relationships for continuous variables. Spearman measures monotonic relationships based on ranked orders.",
+          "rubricCriteria": [
+            {
+              "criterionName": "Pearson Linearity",
+              "maxMarks": 10,
+              "description": "Linear relationship and parametric assumptions"
+            },
+            {
+              "criterionName": "Spearman Monotonicity",
+              "maxMarks": 10,
+              "description": "Rank-based monotonic relationship and robustness to outliers"
+            },
+            {
+              "criterionName": "Mathematical Formulations",
+              "maxMarks": 10,
+              "description": "Accurate formulas and range [-1.0 to +1.0]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EXAM-CAT2-DBMS",
+      "name": "Continuous Assessment Test 2 (CAT 2) — DBMS",
+      "type": "CAT 2",
+      "subject": "Database Management Systems",
+      "department": "Computer Science & Engineering",
+      "semester": "Sem 5",
+      "academicYear": "2026-2027",
+      "date": "2026-10-22",
+      "startTime": "13:30",
+      "endTime": "15:00",
+      "maxMarks": 50,
+      "passingMarks": 25,
+      "instructions": "Explain transaction schedules with rollback traces.",
+      "syllabusVersionId": "SYL-DBMS-001",
+      "createdAt": "2026-09-10T09:00:00Z",
+      "createdBy": "USR-TEACHER-001",
+      "questions": [
+        {
+          "id": "Q-DBMS-1",
+          "questionNumber": "1",
+          "questionText": "Explain the ACID properties in transaction processing and describe how write-ahead logging (WAL) guarantees the Durability and Atomicity properties.",
+          "maxMarks": 25,
+          "unitNumber": 1,
+          "topicId": "TOP-DBMS-01",
+          "modelAnswer": "Atomicity (all or nothing), Consistency, Isolation, Durability. WAL writes log records to disk before data pages to allow undo and redo on crash.",
+          "rubricCriteria": [
+            {
+              "criterionName": "ACID Properties Definition",
+              "maxMarks": 10,
+              "description": "Full and accurate definition of A, C, I, D"
+            },
+            {
+              "criterionName": "Write-Ahead Logging Mechanics",
+              "maxMarks": 10,
+              "description": "Explains undo/redo logs before flushing dirty pages"
+            },
+            {
+              "criterionName": "Crash Recovery Execution",
+              "maxMarks": 5,
+              "description": "Details rollforward for durability and rollback for atomicity"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "syllabusDocuments": [
+    {
+      "id": "SYL-DEV-001",
+      "subject": "Data Exploration and Visualization",
+      "semester": "Sem 5",
+      "academicYear": "2026-2027",
+      "version": 1,
+      "uploadedAt": "2026-08-01T10:00:00Z",
+      "uploadedBy": "USR-TEACHER-001",
+      "status": "active",
+      "topics": [
+        {
+          "id": "TOP-DEV-01",
+          "unitNumber": 1,
+          "unitTitle": "Exploratory Data Analysis Foundations",
+          "topicTitle": "Descriptive Statistics & Five-Number Summary",
+          "description": "Calculation of mean, median, mode, IQR, standard deviation and Tukey outlier detection.",
+          "learningOutcomes": [
+            "Understand parametric vs non-parametric metrics",
+            "Compute Quartiles and IQR",
+            "Identify anomalies using Tukey fences"
+          ],
+          "importanceWeight": 5,
+          "estimatedHours": 4.5
+        },
+        {
+          "id": "TOP-DEV-02",
+          "unitNumber": 2,
+          "unitTitle": "Data Quality & Preprocessing",
+          "topicTitle": "Missing Value Handling & Normalization",
+          "description": "Techniques for mean/median imputation, row omission, and min-max feature scaling.",
+          "learningOutcomes": [
+            "Identify missingness mechanisms",
+            "Perform median imputation"
+          ],
+          "importanceWeight": 4,
+          "estimatedHours": 3.5
+        },
+        {
+          "id": "TOP-DEV-03",
+          "unitNumber": 3,
+          "unitTitle": "Multivariate Visualization",
+          "topicTitle": "Correlation Matrices & Scatter Regression",
+          "description": "Pearson correlation coefficient derivation, heatmaps, and linear regression trendlines.",
+          "learningOutcomes": [
+            "Interpret correlation matrix -1.0 to +1.0",
+            "Plot bivariate scatter with R-squared"
+          ],
+          "importanceWeight": 5,
+          "estimatedHours": 5
+        }
+      ]
+    },
+    {
+      "id": "SYL-DBMS-001",
+      "subject": "Database Management Systems",
+      "semester": "Sem 5",
+      "academicYear": "2026-2027",
+      "version": 1,
+      "uploadedAt": "2026-08-01T10:00:00Z",
+      "uploadedBy": "USR-TEACHER-001",
+      "status": "active",
+      "topics": [
+        {
+          "id": "TOP-DBMS-01",
+          "unitNumber": 1,
+          "unitTitle": "Transaction Management",
+          "topicTitle": "ACID Properties and Concurrency Control",
+          "description": "Atomicity, Consistency, Isolation, Durability guarantees and two-phase locking.",
+          "learningOutcomes": [
+            "Explain ACID guarantees",
+            "Contrast serializability with dirty reads"
+          ],
+          "importanceWeight": 5,
+          "estimatedHours": 4
+        },
+        {
+          "id": "TOP-DBMS-02",
+          "unitNumber": 2,
+          "unitTitle": "Database Recovery",
+          "topicTitle": "Write-Ahead Logging (WAL) & ARIES Protocol",
+          "description": "Redo and Undo logging mechanisms ensuring crash recovery.",
+          "learningOutcomes": [
+            "Describe WAL principles",
+            "Explain rollback and rollforward recovery phases"
+          ],
+          "importanceWeight": 5,
+          "estimatedHours": 4.5
+        }
+      ]
+    }
+  ],
+  "submissions": [],
+  "evaluations": [
+    {
+      "id": "EVL-CAT1-DEV-001",
+      "examinationId": "EXAM-CAT1-DEV",
+      "studentId": "USR-STU-732225AI104",
+      "studentRollNumber": "732225AI104",
+      "studentName": "Aarav Sharma",
+      "department": "AI & Data Science",
+      "classYear": "Year 3 - Sec A",
+      "subject": "Data Exploration and Visualization",
+      "assessmentName": "Continuous Assessment Test 1 (CAT 1) — DEV",
+      "assessmentType": "CAT 1",
+      "date": "2026-09-15",
+      "maxMarks": 50,
+      "aiMarks": 44.5,
+      "adjustedMarks": 45,
+      "finalMarks": 45,
+      "percentage": 90,
+      "grade": "A+",
+      "status": "PUBLISHED",
+      "isPublishedToStudent": true,
+      "publishedAt": "2026-09-18T14:00:00Z",
+      "publishedBy": "Prof. Balaji S.",
+      "feedback": "Excellent conceptual depth and rigorous explanation of Tukey outlier fences.",
+      "strengths": [
+        "Accurate 1.5*IQR formula",
+        "Well structured diagrammatic description",
+        "Distinguished parametric vs non-parametric properties"
+      ],
+      "missingConcepts": [
+        "Could mention extreme outlier fence (3.0*IQR)"
+      ],
+      "areasForImprovement": [
+        "Practice drawing symmetric vs skewed box plot shapes"
+      ],
+      "rubricBreakdown": {
+        "conceptualUnderstanding": 9.5,
+        "technicalAccuracy": 9,
+        "completeness": 9,
+        "structureAndClarity": 9.5
+      },
+      "keywordCoveragePercent": 94,
+      "evaluatedAt": "2026-09-16T11:00:00Z",
+      "teacherNotes": "Outstanding paper. Verified by Prof. Balaji."
+    },
+    {
+      "id": "EVL-CAT2-DBMS-001",
+      "examinationId": "EXAM-CAT2-DBMS",
+      "studentId": "USR-STU-732225AI104",
+      "studentRollNumber": "732225AI104",
+      "studentName": "Aarav Sharma",
+      "department": "AI & Data Science",
+      "classYear": "Year 3 - Sec A",
+      "subject": "Database Management Systems",
+      "assessmentName": "Continuous Assessment Test 2 (CAT 2) — DBMS",
+      "assessmentType": "CAT 2",
+      "date": "2026-10-22",
+      "maxMarks": 50,
+      "aiMarks": 41,
+      "adjustedMarks": 42,
+      "finalMarks": 42,
+      "percentage": 84,
+      "grade": "A",
+      "status": "PUBLISHED",
+      "isPublishedToStudent": true,
+      "publishedAt": "2026-10-25T16:30:00Z",
+      "publishedBy": "Prof. Balaji S.",
+      "feedback": "Very good articulation of write-ahead logging and recovery rollback.",
+      "strengths": [
+        "Clear definition of Atomicity and Durability",
+        "Explains undo/redo log records correctly"
+      ],
+      "missingConcepts": [
+        "Minor omission of checkpointing mechanisms"
+      ],
+      "areasForImprovement": [
+        "Elaborate on how fuzzy checkpoints speed up restart recovery"
+      ],
+      "rubricBreakdown": {
+        "conceptualUnderstanding": 8.5,
+        "technicalAccuracy": 8.5,
+        "completeness": 8,
+        "structureAndClarity": 8.5
+      },
+      "keywordCoveragePercent": 88,
+      "evaluatedAt": "2026-10-23T15:20:00Z",
+      "teacherNotes": "Approved."
+    },
+    {
+      "id": "EVL-DRAFT-AI-001",
+      "examinationId": "EXAM-CAT1-DEV",
+      "studentId": "USR-STU-732225AI104",
+      "studentRollNumber": "732225AI104",
+      "studentName": "Aarav Sharma",
+      "department": "AI & Data Science",
+      "classYear": "Year 3 - Sec A",
+      "subject": "Artificial Intelligence",
+      "assessmentName": "Pre-Semester Model Exam — AI",
+      "assessmentType": "Model Examination",
+      "date": "2026-10-30",
+      "maxMarks": 50,
+      "aiMarks": 39,
+      "adjustedMarks": 39,
+      "finalMarks": 39,
+      "percentage": 78,
+      "grade": "B",
+      "status": "TEACHER_APPROVED",
+      "isPublishedToStudent": false,
+      "feedback": "Solid explanation of bias-variance tradeoff. Pending faculty release.",
+      "evaluatedAt": "2026-10-31T10:00:00Z"
+    }
+  ],
+  "studyTasks": [
+    {
+      "id": "TSK-001",
+      "studentId": "USR-STU-732225AI104",
+      "subject": "Data Exploration and Visualization",
+      "unitNumber": 2,
+      "topicTitle": "Missing Value Imputation & IQR Bounds",
+      "date": "2026-11-03",
+      "startTime": "17:00",
+      "endTime": "18:30",
+      "durationMinutes": 90,
+      "priority": "High",
+      "difficulty": "Moderate",
+      "isSmartScheduled": true,
+      "completed": false,
+      "intervalDays": 3,
+      "easeFactor": 2.5,
+      "repetitions": 1
+    },
+    {
+      "id": "TSK-002",
+      "studentId": "USR-STU-732225AI104",
+      "subject": "Database Management Systems",
+      "unitNumber": 2,
+      "topicTitle": "Write-Ahead Logging (WAL) Checkpoints",
+      "date": "2026-11-04",
+      "startTime": "18:00",
+      "endTime": "19:15",
+      "durationMinutes": 75,
+      "priority": "Medium",
+      "difficulty": "Hard",
+      "isSmartScheduled": true,
+      "completed": false,
+      "intervalDays": 2,
+      "easeFactor": 2.3,
+      "repetitions": 2
+    }
+  ],
+  "mentorMessages": {
+    "USR-STU-732225AI104": [
+      {
+        "id": "MSG-001",
+        "sender": "mentor",
+        "text": "Hello Aarav! I am your IntelliGrade Academic AI Mentor. I have reviewed your published marks in DEV (90% A+) and DBMS (84% A). What topic would you like to focus on for your upcoming Model Exams?",
+        "timestamp": "2026-10-26T09:00:00Z"
+      }
+    ]
+  },
+  "auditLogs": [
+    {
+      "id": "LOG-001",
+      "timestamp": "2026-11-02T07:10:21.779Z",
+      "action": "SYSTEM_BOOTSTRAP",
+      "actor": "SYSTEM",
+      "details": "Initialized administrator (admin@nandhaengg.org) and student roster."
+    },
+    {
+      "id": "LOG-1793603486988",
+      "timestamp": "2026-11-02T07:11:26.988Z",
+      "action": "STUDENT_REGISTERED",
+      "actor": "732225ai105@nandhaengg.org",
+      "details": "Student account created and linked to roster 732225AI105"
+    },
+    {
+      "id": "LOG-1793603496136",
+      "timestamp": "2026-11-02T07:11:36.136Z",
+      "action": "STAFF_REGISTRATION_REQUESTED",
+      "actor": "prof.radha@nandhaengg.org",
+      "details": "Staff registration pending admin approval."
+    }
+  ]
+}

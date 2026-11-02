@@ -1,0 +1,1352 @@
+# INTELLIGRADE — COMPLETE ARCHITECTURAL REBUILD
+## AI-Based Descriptive Answer Evaluation, Academic Management and Student Performance Analytics
+
+You are acting as a senior software architect, full-stack developer, AI/ML engineer, database architect, cybersecurity engineer, and professional UI/UX designer.
+
+Your task is to transform the existing broken Intelligrade project into a fully functional, secure, production-structured academic management and AI evaluation application.
+
+This is a university-level PBL project for Data Exploration and Visualization (DEV).
+
+IMPORTANT: The current application is incomplete and has a broken architecture. It currently behaves like a single interface without proper login, role separation, or connected functionality.
+
+Do not simply redesign the existing dashboard. Audit the existing project, repair its architecture, implement proper authentication, and build a complete interconnected application.
+
+Do not generate a decorative prototype or simulated buttons.
+
+Every feature must have a working implementation, proper data persistence, error handling, and validation.
+
+---
+
+# PHASE 0 — AUDIT THE EXISTING PROJECT
+
+Before modifying anything:
+
+1. Inspect the complete existing codebase.
+2. Identify the current frontend framework, backend, routes, components, and database configuration.
+3. Identify broken navigation, non-functional buttons, missing authentication, and disconnected data.
+4. Identify reusable components and preserve useful working code.
+5. Remove obsolete demo interfaces and conflicting authentication implementations.
+6. Create a clear implementation plan.
+7. Do not delete existing project data or configurations without checking their purpose.
+
+Use one consistent source of truth for authentication and application data.
+
+Do not create duplicate dashboards or multiple competing authentication systems.
+
+If the old application has no usable backend, establish the new architecture described below.
+
+# PHASE 1 — TECHNICAL ARCHITECTURE
+
+Use this architecture:
+
+Frontend:
+- React
+- TypeScript
+- Tailwind CSS
+- Lucide icons
+- React Router
+- Recharts or Plotly
+
+Backend and data:
+- Supabase Authentication
+- Supabase PostgreSQL
+- Supabase Storage
+- Supabase Row Level Security (RLS)
+- Supabase Edge Functions where server-side operations are required
+
+AI:
+- Gemini API
+- Structured JSON output
+- Server-side AI evaluation service
+
+Data analytics:
+- PapaParse for CSV parsing
+- Pandas and NumPy for reproducible analytical workflows
+- Plotly for interactive visualizations
+- A documented Python analysis notebook for the DEV component
+
+Use the latest compatible stable package versions.
+
+Keep the architecture modular and understandable.
+
+Create separate folders for:
+- Authentication
+- Student dashboard
+- Teacher dashboard
+- Student management
+- Examination management
+- Syllabus management
+- Answer-sheet processing
+- AI evaluation
+- Mentoring
+- Study scheduling
+- Data exploration
+- Visualization
+- Reports
+- Database services
+- Shared components
+
+Create database migrations, security policies, and setup documentation.
+
+Do not use Firebase as a second competing authentication/database provider.
+
+Do not deploy paid infrastructure or enable billing automatically.
+
+# PHASE 2 — AUTHENTICATION AND ROLE MANAGEMENT
+
+This is the highest-priority module.
+
+The application must initially open to a professional authentication screen.
+
+It must never directly open the dashboard without authentication.
+
+## 2.1 Authentication page
+
+Design a clean sign-in interface with:
+
+- Intelligrade logo.
+- Welcome heading.
+- Email / Username field.
+- Password field.
+- Show/hide password.
+- Remember session option.
+- Forgot password.
+- Sign In button.
+- First-Time Account Setup link.
+
+Keep it minimal and professional.
+
+## 2.2 Student account setup
+
+Students must use their official college email address.
+
+Example:
+
+732225AI104@nandhaengg.org
+
+Interpret:
+- Student ID: 732225AI104
+- Institution domain: nandhaengg.org
+
+First-time student registration:
+
+1. Enter institutional email.
+2. Enter student name.
+3. Enter roll number.
+4. Enter department and year.
+5. Create password.
+6. Confirm password.
+7. Verify email.
+8. Activate the account.
+
+IMPORTANT:
+
+Student registration must be checked against a teacher/admin-managed student roster.
+
+Support importing the student roster using CSV.
+
+The student email and roll number must match an existing roster entry before the student account is activated.
+
+Do not let students choose their own permissions or change their own role.
+
+The system must automatically assign the student role through trusted server-side logic.
+
+An existing student must use the normal login process, not create a duplicate account.
+
+## 2.3 Student login
+
+Accept institutional email addresses as login identifiers.
+
+Example:
+
+732225AI104@nandhaengg.org
+
+The student enters their password.
+
+After successful authentication:
+- Retrieve their authenticated user ID.
+- Retrieve their verified student profile.
+- Confirm that their account is active.
+- Navigate to the Student Dashboard.
+
+Do not rely on the email string alone to grant access.
+
+## 2.4 Staff account setup
+
+Staff members may register using any valid professional email address, not necessarily the college domain.
+
+Staff onboarding must request:
+- Full name.
+- Email address.
+- Department.
+- Designation.
+- Password.
+- Email verification.
+
+A staff member must initially receive a PENDING_APPROVAL status.
+
+Only an existing administrator can approve a staff account and grant the teacher role.
+
+Do not allow users to obtain teacher access simply by selecting Staff during registration.
+
+## 2.5 Initial administrator account
+
+Create a one-time server-side administrator bootstrap process.
+
+Initial administrator:
+
+Email: admin@nandhaengg.org
+
+Temporary initial password: sudarsan
+
+Requirements:
+
+- Create this account through a server-side seed/bootstrap script using the Supabase administrative API.
+- Never hardcode the password in frontend code.
+- Never store plaintext passwords in application tables.
+- Keep the service role key and bootstrap configuration in server-side environment variables only.
+- Mark the account as requiring a password change.
+- Require a password change before normal dashboard access.
+- Prevent duplicate administrator creation during repeated startup.
+- The account must have administrator and teacher dashboard privileges.
+
+This is a temporary demonstration credential, not a production password.
+
+## 2.6 Authentication security
+
+Implement:
+
+- Secure session persistence.
+- Logout.
+- Password recovery.
+- Email verification.
+- Protected routes.
+- Role-based navigation.
+- Session expiry handling.
+- Authentication error messages.
+- Pending account handling.
+- Disabled account handling.
+
+Do not show internal technical errors to normal users.
+
+# PHASE 3 — DATABASE AND SECURITY
+
+Create a normalized database schema.
+
+Required entities:
+
+1. user_profiles
+2. student_roster
+3. staff_access_requests
+4. departments
+5. subjects
+6. syllabus_documents
+7. syllabus_topics
+8. examinations
+9. exam_questions
+10. exam_schedules
+11. answer_submissions
+12. answer_pages
+13. evaluation_rubrics
+14. evaluation_results
+15. student_marks
+16. publication_records
+17. student_study_tasks
+18. student_availability
+19. study_schedules
+20. mentoring_sessions
+21. notifications
+22. audit_logs
+
+Every record must have appropriate identifiers, timestamps, ownership, and relationships.
+
+## Critical security requirements
+
+Implement Supabase Row Level Security on all relevant tables.
+
+STUDENT PERMISSIONS:
+
+- Read their own profile.
+- Read only their own published marks.
+- Read their own assessment history.
+- Read their own performance analytics.
+- Read permitted syllabus and learning resources.
+- Create and manage their own personal study schedules.
+- Never read another student's answer sheet, marks, personal information, or unpublished evaluation.
+
+TEACHER PERMISSIONS:
+
+- Read student profiles and marks according to their assigned institution/department permissions.
+- Create and edit syllabus records.
+- Create and manage examinations.
+- Upload and view answer sheets.
+- Evaluate and update marks.
+- View class-wide analytics.
+- Publish marks.
+- Manage student records.
+
+ADMINISTRATOR PERMISSIONS:
+
+- All teacher permissions.
+- Approve staff.
+- Import student rosters.
+- Manage application roles.
+- Manage institution settings.
+
+IMPORTANT SECURITY RULES:
+
+1. Never trust frontend role information.
+2. Never allow users to change their own role.
+3. Never rely only on hidden buttons or frontend route restrictions.
+4. Enforce authorization in PostgreSQL RLS and server-side endpoints.
+5. Do not expose Supabase service role keys or Gemini API keys in the browser.
+6. Students must not receive unpublished marks even through direct API requests.
+7. Storage permissions must follow the ownership and role of each uploaded file.
+8. Audit sensitive actions.
+
+Implement automated tests proving that Student A cannot access Student B's marks, even through a direct database request.
+
+# PHASE 4 — STUDENT DASHBOARD
+
+After successful student authentication, display a personalized student dashboard.
+
+The dashboard must contain only information belonging to the currently authenticated student.
+
+## Student sidebar
+
+- Dashboard
+- My Marks
+- Performance Analytics
+- My Subjects
+- AI Mentor
+- Study Planner
+- My Timetable
+- Notifications
+- Profile
+- Settings
+
+## Student overview
+
+Display:
+
+- Overall average.
+- Published assessment count.
+- Highest subject score.
+- Subject requiring improvement.
+- Upcoming assessments.
+- Recent published results.
+- Personal performance trend.
+
+Use actual data from the student's records.
+
+Never display unpublished marks.
+
+## My Marks
+
+Provide an organized marks table:
+
+- Subject.
+- Examination.
+- Date.
+- Maximum marks.
+- Obtained marks.
+- Percentage.
+- Grade.
+- Publication status.
+
+Allow students to open individual assessment details.
+
+Show AI feedback only where the teacher has allowed it to be published.
+
+## Personal analytics
+
+Provide:
+
+- Subject-wise marks charts.
+- CAT 1 versus CAT 2 comparisons.
+- Performance trend.
+- Marks distribution.
+- Strength and weakness analysis.
+
+The student must only see their own results.
+
+Do not expose other students' names or individual scores.
+
+# PHASE 5 — AI STUDENT MENTOR
+
+Develop an AI academic mentor.
+
+Its purpose is to help students understand their academic performance and plan improvement.
+
+It must use:
+- Student's own published marks.
+- Subject-wise performance.
+- Teacher-approved syllabus.
+- Upcoming examination schedules.
+- Student-defined academic goals.
+
+Features:
+
+1. Explain weak subject areas.
+2. Recommend topics to revise.
+3. Suggest achievable study targets.
+4. Help students prepare for CAT examinations.
+5. Answer syllabus-related academic questions.
+6. Give progress-based feedback.
+7. Recommend study sessions.
+
+The mentor must not access other students' private data.
+
+Provide practical, short and understandable responses.
+
+Do not pretend to know a student's academic weakness without sufficient assessment data.
+
+# PHASE 6 — SMART STUDY PLANNER
+
+Create a functional study planning system.
+
+Students should have two options.
+
+## A. Manual scheduling
+
+Allow students to:
+
+- Select a subject.
+- Add a topic.
+- Set a date.
+- Set start and end times.
+- Set task priority.
+- Set estimated duration.
+- Set a completion status.
+- Edit and delete tasks.
+
+Display the schedule using a calendar and weekly timetable.
+
+Prevent overlapping study sessions unless explicitly overridden.
+
+## B. Smart scheduling
+
+Create an intelligent scheduler that generates a personalized study routine.
+
+Inputs:
+
+- Available study hours.
+- Fixed college timetable.
+- Existing commitments.
+- Upcoming examination dates.
+- Weak subjects.
+- Topic difficulty.
+- Topic importance.
+- Preferred study duration.
+- Break preferences.
+- Student's daily study limit.
+
+Use a weighted-priority scheduling algorithm.
+
+Calculate topic priority from:
+- Examination urgency.
+- Academic weakness.
+- Topic difficulty.
+- Importance assigned by the teacher.
+- Time since last revision.
+
+Use a greedy priority-based scheduler with time-slot and availability constraints.
+
+Include spaced repetition using a configurable SM-2-inspired revision schedule.
+
+Do not schedule tasks over existing fixed commitments.
+
+Add configurable study/break intervals.
+
+Allow students to:
+- Preview the suggested routine.
+- Accept it.
+- Edit it.
+- Reject it.
+- Regenerate it.
+
+Never overwrite existing manual commitments without permission.
+
+The smart scheduler must not just generate random timetable entries.
+
+# PHASE 7 — TEACHER DASHBOARD
+
+After an approved teacher or administrator logs in, display the teacher interface.
+
+Teacher sidebar:
+
+- Overview
+- Student Management
+- Departments & Subjects
+- Syllabus Management
+- Exam Management
+- Answer Sheet Upload
+- Evaluation Centre
+- Marks Management
+- Performance Analytics
+- Reports
+- Notifications
+- Settings
+
+## Teacher overview
+
+Display:
+
+- Total students.
+- Total subjects.
+- Total examinations.
+- Evaluations pending.
+- Marks awaiting approval.
+- Published results.
+- Overall class average.
+- Department-wise performance.
+
+Charts:
+- Subject-wise average.
+- Examination-wise average.
+- Grade distribution.
+- Pass/fail ratio.
+- Student performance distribution.
+
+Include filters for department, subject, examination and date.
+
+All metrics must be dynamically computed from database records.
+
+# PHASE 8 — STUDENT MANAGEMENT
+
+Create a full student administration module.
+
+Features:
+
+- Add student.
+- Edit student.
+- Deactivate student.
+- Search.
+- Filter.
+- Import student CSV.
+- View student details.
+- Assign department, class, semester and subjects.
+
+Student details:
+
+- Name.
+- Roll number.
+- Institutional email.
+- Department.
+- Year.
+- Semester.
+- Account status.
+
+Create an individual student academic profile for teachers.
+
+Teachers can see all students within their authorized scope.
+
+Do not allow students to access this module.
+
+# PHASE 9 — SYLLABUS MANAGEMENT
+
+This module is essential because the AI evaluator must use teacher-provided academic material as its knowledge boundary.
+
+Teachers must be able to:
+
+- Create subjects.
+- Upload syllabus PDFs.
+- Upload DOCX files.
+- Upload text files.
+- Enter syllabus content manually.
+- Edit syllabus content.
+- Delete outdated content.
+- Organize syllabus into units and topics.
+- Map topics to learning outcomes.
+- Version syllabus documents.
+
+Each subject should have its own syllabus.
+
+Syllabus records must support:
+
+- Subject.
+- Semester.
+- Academic year.
+- Unit.
+- Topic.
+- Learning outcome.
+- Document version.
+- Upload date.
+- Status.
+
+Allow teachers to preview extracted content before activating the syllabus.
+
+Only approved syllabus versions should be used for evaluation.
+
+Changes to the syllabus must not silently modify past evaluation records.
+
+Store which syllabus version was used in every evaluation.
+
+# PHASE 10 — EXAMINATION MANAGEMENT
+
+Build a proper examination management system.
+
+Teachers must be able to create any number of examinations for each subject.
+
+Examples:
+
+- CAT 1
+- CAT 2
+- Model Examination
+- Semester Examination
+- Internal Assessment
+- Assignment
+
+## Examination creation
+
+Required fields:
+
+- Examination name.
+- Examination type.
+- Subject.
+- Department.
+- Semester.
+- Date.
+- Start time.
+- End time.
+- Maximum marks.
+- Passing marks.
+- Examination instructions.
+- Associated syllabus.
+- Question paper.
+
+## Question paper management
+
+Support:
+
+- PDF upload.
+- DOCX upload.
+- Image upload.
+- Manual question creation.
+- Editing questions.
+- Editing mark allocation.
+- Adding subquestions.
+- Setting maximum marks per question.
+- Assigning each question to syllabus units/topics.
+
+The system may extract questions from an uploaded paper, but teachers must be able to review and edit the extracted questions.
+
+Every examination must have its own independent question paper and answer-sheet submission area.
+
+For example:
+
+CAT 1 → Mathematics → Question Paper → Student Answer Sheets → Evaluation.
+
+CAT 2 → Mathematics → Different Question Paper → Different Student Answer Sheets → Evaluation.
+
+Repeat this workflow independently for all subjects and examinations.
+
+Never mix CAT 1 and CAT 2 submissions.
+
+## Editable examinations
+
+Teachers must be able to edit examination details, schedules, syllabus associations, question papers and marks allocation.
+
+Maintain version history.
+
+Do not overwrite already evaluated records silently.
+
+If the examination paper changes after evaluation, flag affected evaluations for review.
+
+# PHASE 11 — ANSWER SHEET UPLOAD AND CAMERA SCANNING
+
+Create a dedicated answer-sheet management interface.
+
+Each examination must have a submission area.
+
+Teachers must be able to:
+
+1. Select the examination.
+2. Select the subject.
+3. Select the student.
+4. Upload a PDF.
+5. Upload multiple page images.
+6. Capture answer sheets through the camera.
+7. Review the uploaded pages.
+8. Rearrange pages.
+9. Remove incorrect pages.
+10. Save the submission.
+
+Support JPG, JPEG, PNG and PDF.
+
+## Camera access
+
+Provide a button named "Scan Answer Sheet".
+
+When clicked:
+
+- Ask for camera permission through the browser.
+- Start the camera only after permission is granted.
+- Show a live preview.
+- Allow capturing images.
+- Allow multiple page captures.
+- Allow image retakes.
+- Allow saving captured pages.
+- Stop the camera when the scan session ends.
+
+Use the browser MediaDevices getUserMedia API.
+
+Camera access must use HTTPS or localhost.
+
+If camera permission is denied or unavailable, provide normal file upload as a fallback.
+
+Never request camera access automatically upon login.
+
+## Image processing
+
+Implement:
+
+- Image rotation.
+- Cropping.
+- Perspective correction where practical.
+- Brightness and contrast enhancement.
+- Noise reduction.
+- Page ordering.
+
+Detect duplicate pages where practical.
+
+## OCR and handwriting
+
+Use Tesseract.js for printed text recognition and a configurable Gemini multimodal transcription process for handwriting or difficult scans.
+
+Do not assume handwriting OCR is always accurate.
+
+Show extracted text and allow manual correction before grading.
+
+Flag:
+- Illegible writing.
+- Low-confidence text.
+- Missing pages.
+- Unrecognized question numbers.
+- Incomplete answer regions.
+
+An unrecognized or unreadable answer must be marked NEEDS_REVIEW, not automatically treated as a wrong answer.
+
+Map answers to the appropriate examination questions.
+
+# PHASE 12 — INTELLIGENT SEMANTIC ANSWER EVALUATION
+
+This is the core AI capability of Intelligrade.
+
+Develop an evidence-based semantic grading engine.
+
+CRITICAL RULE:
+
+Do not grade by exact keyword matching, string matching, or simple cosine similarity.
+
+Do not require students to reproduce the textbook wording.
+
+The system must evaluate whether the answer demonstrates the concepts, understanding, reasoning, and application expected by the question.
+
+## 12.1 Evaluation knowledge boundary
+
+The AI must use:
+
+1. Teacher-approved syllabus.
+2. Relevant unit and learning outcomes.
+3. Actual examination question.
+4. Teacher-approved scoring rubric.
+5. Optional teacher-provided reference answer.
+
+Do not use internet search to introduce external facts during grading.
+
+Do not invent concepts that are not supported by the course material or approved rubric.
+
+Do not require a model answer if the teacher has not provided one.
+
+## 12.2 Intelligent rubric generation
+
+When a teacher creates an examination, allow the system to suggest a concept-based rubric using:
+
+- The question.
+- Maximum marks.
+- Associated syllabus topics.
+- Learning outcomes.
+
+The suggested rubric should identify:
+- Essential concepts.
+- Expected explanations.
+- Logical reasoning.
+- Applications or examples where relevant.
+- Partial-credit criteria.
+- Accepted alternative explanations.
+
+The teacher must review and approve this rubric before it is used for bulk evaluation.
+
+Teachers must be able to edit and lock a rubric for an examination.
+
+Use the same approved rubric for all students answering the same question.
+
+## 12.3 Established evaluation method
+
+Implement this structured pipeline:
+
+STEP 1 — ANSWER EXTRACTION
+
+Extract each student's answer and assign it to the appropriate examination question.
+
+Retain page references and OCR confidence.
+
+STEP 2 — SYLLABUS RETRIEVAL
+
+Split teacher-provided syllabus material into topic-aware chunks.
+
+Use semantic embeddings and cosine similarity only to retrieve relevant syllabus sections.
+
+Important: similarity is used for finding relevant context, not directly for assigning marks.
+
+STEP 3 — QUESTION UNDERSTANDING
+
+Understand:
+- What the question asks.
+- The expected depth.
+- The relevant syllabus concepts.
+- The maximum marks.
+- The approved rubric.
+
+STEP 4 — SEMANTIC ANSWER ANALYSIS
+
+Use Gemini to assess:
+
+- Conceptual correctness.
+- Understanding.
+- Relevance.
+- Explanation quality.
+- Logical reasoning.
+- Completeness.
+- Application.
+- Appropriate examples.
+- Contradictions or factual errors against supplied course material.
+
+Allow different valid wording and alternative correct explanations.
+
+Do not penalize students merely for using different terminology if the concept is correctly communicated.
+
+STEP 5 — EVIDENCE-BASED MARK ALLOCATION
+
+For every scoring criterion, provide:
+
+- Criterion name.
+- Maximum marks.
+- Marks awarded.
+- Evidence from the student's answer.
+- Relevant syllabus topic.
+- Reason for awarding or deducting marks.
+- Improvement suggestion.
+
+Award partial credit according to the approved rubric.
+
+Never award marks for unsupported claims.
+
+STEP 6 — DETERMINISTIC SCORE CALCULATION
+
+Use a deterministic backend scoring function to:
+
+- Sum criterion scores.
+- Enforce the question's maximum marks.
+- Enforce non-negative marks.
+- Validate decimal precision.
+- Calculate final percentages.
+
+Do not allow the model to return marks outside the configured limits.
+
+STEP 7 — SECOND-PASS VERIFICATION
+
+Run a separate verification pass for low-confidence results, inconsistent scoring, or major OCR uncertainty.
+
+Check:
+- Whether the marks match the rubric.
+- Whether evidence actually exists.
+- Whether the feedback matches the marks.
+- Whether the calculation is valid.
+
+Do not waste additional API calls on every answer unnecessarily.
+
+STEP 8 — TEACHER REVIEW
+
+Save the result as AI-generated draft marks.
+
+The teacher must be able to:
+- View the question.
+- View the student's answer.
+- View OCR text.
+- View criterion-level marks.
+- View evidence.
+- View improvement suggestions.
+- Accept the suggested marks.
+- Modify marks.
+- Add comments.
+- Request re-evaluation.
+
+AI-generated marks must never be automatically published.
+
+## 12.4 Structured AI responses
+
+Use Gemini Structured Outputs with JSON Schema.
+
+The response must include:
+
+- questionId
+- maximumMarks
+- criteria
+- criterionScores
+- evidence
+- syllabusReferences
+- awardedMarks
+- feedback
+- confidence
+- needsHumanReview
+- reviewReason
+
+Validate the result in the backend before saving.
+
+Reject malformed, incomplete, or inconsistent outputs.
+
+Do not store raw API responses as trusted marks.
+
+## 12.5 Fairness and consistency
+
+Implement:
+
+- Consistent rubrics.
+- Student identity masking during grading where practical.
+- Same evaluation criteria across all scripts of an examination.
+- Partial-credit scoring.
+- Evidence traceability.
+- OCR confidence checks.
+- Teacher override.
+- Re-evaluation history.
+- Evaluation version tracking.
+
+Keep an audit trail of AI-suggested marks and teacher modifications.
+
+The teacher is the final authority.
+
+# PHASE 13 — TEACHER MARKS MANAGEMENT AND PUBLICATION
+
+Create a separate Marks Management module.
+
+Show a table containing:
+
+- Student ID.
+- Student name.
+- Subject.
+- Examination.
+- Obtained marks.
+- Maximum marks.
+- AI confidence.
+- Teacher approval status.
+- Publication status.
+
+Provide filters by:
+- Examination.
+- Subject.
+- Department.
+- Student.
+- Evaluation status.
+- Publication status.
+
+## Mark statuses
+
+Use a controlled workflow:
+
+- NOT_EVALUATED
+- AI_PROCESSING
+- NEEDS_REVIEW
+- AI_EVALUATED
+- TEACHER_APPROVED
+- PUBLISHED
+
+## Teacher editing
+
+Teachers must be able to:
+
+- Edit marks manually.
+- Modify feedback.
+- Recalculate percentages.
+- Approve individual results.
+- Approve selected results.
+- Re-evaluate answers.
+- Compare original AI marks with edited marks.
+- View evaluation history.
+
+All changes must be recorded.
+
+## Publication workflow
+
+This is a mandatory feature.
+
+After the teacher updates or approves marks:
+
+Show a confirmation dialog:
+
+"Do you want to publish these marks to students?"
+
+Provide:
+- Publish Now.
+- Save as Draft.
+- Cancel.
+
+Allow teachers to:
+
+- Publish an entire examination.
+- Publish selected students' results.
+- Publish an individual student's marks.
+- Keep results unpublished.
+- Publish later.
+- View already published results.
+
+Before publication, show a preview of the affected student records.
+
+Once published, students can access only their own published results.
+
+If a published result is modified, preserve the previous published version and require a new confirmation before releasing the revised result.
+
+Maintain:
+- Published by.
+- Published date.
+- Publication version.
+- Revision history.
+
+# PHASE 14 — DATA EXPLORATION AND VISUALIZATION
+
+This is the primary academic contribution for the DEV subject.
+
+Build a comprehensive teacher-side data exploration workspace.
+
+## Data sources
+
+Use:
+- Student examination marks.
+- Subject performance.
+- CAT 1 and CAT 2 records.
+- Evaluation results.
+- Uploaded academic CSV datasets.
+
+## Data cleaning
+
+Implement:
+- Missing value detection.
+- Duplicate detection.
+- Data type inspection.
+- Null handling.
+- Invalid marks detection.
+- Outlier detection using the IQR method.
+- Cleaned data preview.
+
+Never modify original examination records merely because an analytical cleaning operation was applied.
+
+Maintain a separate analytical dataset.
+
+## Exploratory Data Analysis
+
+Calculate:
+
+- Mean.
+- Median.
+- Mode.
+- Minimum.
+- Maximum.
+- Range.
+- Variance.
+- Standard deviation.
+- Quartiles.
+- Interquartile range.
+- Pass percentage.
+- Subject-wise average.
+- Assessment-wise average.
+
+Use the correct statistical methods and clearly label sample size.
+
+## Interactive visualizations
+
+Implement:
+
+1. Bar chart — subject-wise average marks.
+2. Line chart — student performance across examinations.
+3. Histogram — score distribution.
+4. Pie/donut chart — pass versus fail.
+5. Box plot — marks distribution and outliers.
+6. Heatmap — subject correlation.
+7. Scatter plot — relationship between subject scores.
+8. Grouped bar chart — CAT 1 versus CAT 2.
+
+Provide filters for:
+- Department.
+- Semester.
+- Subject.
+- Examination.
+- Academic year.
+
+Every chart must update according to the selected dataset and filters.
+
+Never hardcode chart values or analytical conclusions.
+
+## Academic insights
+
+Generate insights using the actual computed data.
+
+Examples:
+- Lowest-scoring subject.
+- Highest-scoring subject.
+- Assessment-wise variation.
+- Subjects with high score dispersion.
+- Students requiring additional academic support.
+- Improvement between CAT 1 and CAT 2.
+
+Do not claim improvement when the corresponding time-series data is unavailable.
+
+# PHASE 15 — REPORTS AND EXPORTS
+
+Implement:
+
+Teacher reports:
+- Class performance report.
+- Subject-wise report.
+- Examination report.
+- Student performance report.
+- AI evaluation report.
+- Pass/fail report.
+
+Student reports:
+- Personal marks report.
+- Subject-wise performance.
+- Assessment history.
+- Published feedback.
+
+Support PDF and CSV exports.
+
+Apply the correct access permissions to all reports.
+
+A student must only be able to generate their own report.
+
+# PHASE 16 — PROFESSIONAL UI/UX
+
+Create two distinct application experiences.
+
+STUDENT INTERFACE:
+- Friendly.
+- Personalized.
+- Simple.
+- Focused on learning and improvement.
+
+TEACHER INTERFACE:
+- Professional.
+- Information-rich.
+- Data-focused.
+- Optimized for academic management.
+
+Design requirements:
+
+- Consistent sidebar navigation.
+- Clear top navigation.
+- Logical page hierarchy.
+- Aligned tables.
+- Properly sized dashboard cards.
+- Responsive charts.
+- Consistent form layouts.
+- Professional modals.
+- Search and filter controls.
+- Clear status indicators.
+- Good empty states.
+- Loading skeletons.
+- Error notifications.
+- Confirmation dialogs.
+
+Do not put every functionality on one page.
+
+Do not overcrowd the sidebar.
+
+Group related functions logically.
+
+Use white/light grey surfaces with a professional indigo-blue accent.
+
+Avoid decorative gradients, unnecessary animations, oversized typography, and excessive cards.
+
+Every page must maintain the same design language.
+
+# PHASE 17 — TESTING AND VALIDATION
+
+Do not consider the application complete merely because it renders successfully.
+
+Implement automated and manual verification.
+
+## Authentication tests
+
+- New student registration.
+- Invalid student email.
+- Unregistered student.
+- Invalid password.
+- Successful student login.
+- Staff registration.
+- Pending staff access.
+- Admin login.
+- Password recovery.
+- Logout.
+- Session persistence.
+
+## Authorization tests
+
+- Student A cannot read Student B's marks.
+- Student A cannot read Student B's answer sheets.
+- Student cannot view unpublished marks.
+- Student cannot access teacher routes.
+- Pending staff cannot access teacher routes.
+- Approved teacher can view authorized student data.
+- Teacher cannot promote themselves to administrator.
+- Unauthenticated users cannot access protected data.
+
+## Examination tests
+
+- Create CAT 1.
+- Create CAT 2.
+- Create multiple subjects.
+- Upload different question papers.
+- Edit question papers.
+- Attach multiple answer sheets.
+- Ensure examinations remain independent.
+
+## Evaluation tests
+
+- Correct answers receive appropriate marks.
+- Partially correct answers receive partial credit.
+- Incorrect answers are evaluated against the rubric.
+- Alternative valid wording is accepted.
+- Marks never exceed maximum marks.
+- Malformed AI responses are rejected.
+- Low-confidence answers are flagged.
+- Teacher modifications are stored.
+- Original AI marks remain traceable.
+
+## Publishing tests
+
+- Draft marks remain hidden from students.
+- Approved marks remain hidden until published.
+- Published marks become visible to the correct student.
+- Modified published results require republication.
+- Publication history remains available.
+
+## Camera tests
+
+- Camera permission request.
+- Camera capture.
+- Multiple-page capture.
+- Retake.
+- Camera denial fallback.
+- Normal file upload.
+
+## UI tests
+
+- Every navigation item works.
+- Every button has a real action.
+- Every form validates.
+- Filters work.
+- Tables display real records.
+- Charts reflect actual data.
+- No blank screens.
+- No broken routes.
+- No uncaught runtime errors.
+
+Use unit tests, integration tests, and role-based security tests.
+
+Run the application build and fix all compilation errors.
+
+# PHASE 18 — FINAL DELIVERY REQUIREMENTS
+
+The final project must contain:
+
+1. Complete student authentication.
+2. Complete staff onboarding and approval.
+3. Initial administrator bootstrap.
+4. Separate student and teacher interfaces.
+5. Student-only personal academic access.
+6. Teacher-side student management.
+7. Syllabus management.
+8. Examination management.
+9. Question paper uploading and editing.
+10. Answer-sheet PDF and photo upload.
+11. Camera-based scanning.
+12. OCR and correction workflow.
+13. Semantic AI answer evaluation.
+14. Evidence-based marks allocation.
+15. Teacher-controlled mark editing.
+16. Teacher-controlled result publication.
+17. Student mentoring.
+18. Smart and manual study scheduling.
+19. Data exploration.
+20. Statistical analysis.
+21. Interactive visualizations.
+22. PDF and CSV reports.
+23. Database migrations and security policies.
+24. Test coverage and setup instructions.
+
+Provide:
+
+- Updated source code.
+- Database schema and migrations.
+- Complete RLS policies.
+- Environment variable template.
+- Admin bootstrap instructions.
+- Gemini API setup instructions.
+- Supabase configuration instructions.
+- README with exact local startup commands.
+- Testing instructions.
+- Known limitations, if any.
+
+# STRICT EXECUTION RULES
+
+1. Do not stop at a visual prototype.
+2. Do not use dummy authentication.
+3. Do not use localStorage as the only permanent database.
+4. Do not store passwords manually.
+5. Do not expose API keys in the browser.
+6. Do not allow student role escalation.
+7. Do not show unpublished marks.
+8. Do not grade using exact keyword matching.
+9. Do not publish AI marks automatically.
+10. Do not fabricate OCR or AI evaluation results when services fail.
+11. Do not leave buttons or menu items non-functional.
+12. Do not create fake database success messages.
+13. Do not silently replace existing project data.
+14. Do not enable paid services or billing without explicit approval.
+15. Do not claim a feature is complete until it has been implemented and tested.
+
+Work in sequential implementation stages:
+
+STAGE A: Project audit, clean architecture, Supabase connection and authentication.
+
+STAGE B: Role-based access, database schema, RLS, student dashboard and teacher dashboard.
+
+STAGE C: Student management, subjects, syllabus and examination management.
+
+STAGE D: Answer uploads, camera scanning, OCR and answer organization.
+
+STAGE E: Semantic AI grading, rubric management, teacher review and marks publication.
+
+STAGE F: Student mentoring and smart study scheduling.
+
+STAGE G: Data exploration, visualization, reporting and exports.
+
+STAGE H: Complete integration, security testing, bug fixing and final UI refinement.
+
+Complete each stage before moving to the next. Maintain working features when extending the application.
+
+At the end of every stage, provide:
+- What was implemented.
+- What files were changed.
+- What services need configuration.
+- What tests passed.
+- What remains incomplete.
+
+If an external service is not configured, build the actual integration and give precise setup instructions. Never pretend it is operational.
+
+BEGIN NOW:
+
+First audit the existing application and identify the architectural problems. Then implement Stage A completely.
+
+Do not spend time decorating the old broken interface. Establish a reliable foundation for the entire Intelligrade platform.
